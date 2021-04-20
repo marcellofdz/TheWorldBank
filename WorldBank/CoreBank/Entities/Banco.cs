@@ -12,7 +12,7 @@ namespace CoreBank.Entities
 
         public string Name { get; set; }
 
-        public string Identification { get; set; }
+        public string identification { get; set; }
 
 
     }
