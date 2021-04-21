@@ -8,14 +8,16 @@ namespace CoreBank.Entities
 {
     public class Cuenta
     {
-        public int Id { get; set; }
+        public int CuentaID { get; set; }
 
-        public string Number { get; set; }
+        public int ClienteId { get; set; }
 
-        public Cliente Nombre { get; set; }
+        public int TipoCuentaId { get; set; }
 
-        public int NombreId { get; set; }
+        public DateTime FechaCreacion;
 
-        pub
+        public float Balance { get; set; }
+
+        public int Enabled { get; set; }
     }
 }

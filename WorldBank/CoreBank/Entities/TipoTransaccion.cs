@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace CoreBank.Entities
 {
-    public class Banco
+    public class TipoTransaccion
     {
-        public int BancoID { get; set; }
+        public int TipoTranscId { get; set; }
 
         public string Nombre { get; set; }
-        
+
+        public string Nota { get; set; }
+
         public int Enabled { get; set; }
-
-
     }
 }

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace CoreBank.Entities
 {
-    public class Employee
+    public class TipoMoneda
     {
-        public int Id { get; set; }
+        public int MonedaId { get; set; }
 
-        public int StatusId { get; set; }
+        public string Nombre { get; set; }
+
+        public int Enabled { get; set; }
     }
 }
