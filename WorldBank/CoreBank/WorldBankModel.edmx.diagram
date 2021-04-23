@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a4e6d060ba92422a82c3099a5d7d9574" Name="Diagram1">
+        <EntityTypeShape EntityType="WorldBankModel.Banco" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorldBankModel.Cliente" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorldBankModel.Cuenta" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorldBankModel.Empleado" Width="1.5" PointX="8" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorldBankModel.Role" Width="1.5" PointX="5.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorldBankModel.TipoCuenta" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorldBankModel.TipoMoneda" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorldBankModel.TipoTransaccione" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorldBankModel.Transaccione" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="WorldBankModel.Bancos_Transacciones_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="WorldBankModel.Cliente_Cuentas_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="WorldBankModel.Clientes_Transacciones_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="WorldBankModel.Cuentas_Transacciones_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="WorldBankModel.TipoCuenta_Cuentas_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="WorldBankModel.Rol_Empleado_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="WorldBankModel.TipoMoneda_Transacciones_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="WorldBankModel.TipoTransacciones_Transacciones_FK1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

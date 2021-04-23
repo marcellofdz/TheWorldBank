@@ -6,18 +6,13 @@ using System.Threading.Tasks;
 
 namespace CoreBank.Entities
 {
-    public class Cuenta
-    {
-        public int CuentaID { get; set; }
-
-        public int ClienteId { get; set; }
-
-        public int TipoCuentaId { get; set; }
-
-        public DateTime FechaCreacion;
-
-        public float Balance { get; set; }
-
-        public int Enabled { get; set; }
-    }
+	public class Cuenta
+	{
+		public int CuentaId { get; set; }
+		public int ClienteID { get; set; }
+		public int TipoCuentaId { get; set; }
+		public DateTime? FechaCreacion { get; set; }
+		public double Balance { get; set; }
+		public int Enabled { get; set; }
+	}
 }

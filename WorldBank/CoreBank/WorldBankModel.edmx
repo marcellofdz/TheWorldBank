@@ -1,0 +1,828 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WorldBankModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bancos">
+          <Key>
+            <PropertyRef Name="BancoId" />
+          </Key>
+          <Property Name="BancoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Enabled" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cedula" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Sexo" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="150" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="15" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuentas">
+          <Key>
+            <PropertyRef Name="CuentaId" />
+          </Key>
+          <Property Name="CuentaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteID" Type="int" Nullable="false" />
+          <Property Name="TipoCuentaId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="Balance" Type="float" Nullable="false" />
+          <Property Name="Enabled" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="EmpleadoId" />
+          </Key>
+          <Property Name="EmpleadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Sexo" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Nota" Type="nvarchar" MaxLength="255" />
+          <Property Name="Enabled" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoCuentas">
+          <Key>
+            <PropertyRef Name="TipoCuentasId" />
+          </Key>
+          <Property Name="TipoCuentasId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
+          <Property Name="Enabled" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMoneda">
+          <Key>
+            <PropertyRef Name="MonedaId" />
+          </Key>
+          <Property Name="MonedaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Enabled" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoTransacciones">
+          <Key>
+            <PropertyRef Name="TipoTransacId" />
+          </Key>
+          <Property Name="TipoTransacId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nota" Type="nvarchar" MaxLength="255" />
+          <Property Name="Enabled" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transacciones">
+          <Key>
+            <PropertyRef Name="TransacId" />
+          </Key>
+          <Property Name="TransacId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteId" Type="int" Nullable="false" />
+          <Property Name="CuentaId" Type="int" Nullable="false" />
+          <Property Name="TUsuarioCuenta" Type="int" />
+          <Property Name="TUsuarioCedula" Type="nvarchar" MaxLength="13" />
+          <Property Name="Notas" Type="nvarchar" MaxLength="700" />
+          <Property Name="TipoTransacId" Type="int" Nullable="false" />
+          <Property Name="TUsuarioBancoId" Type="int" Nullable="false" />
+          <Property Name="TipoMonedaId" Type="int" />
+          <Property Name="Debito" Type="float" />
+          <Property Name="Credito" Type="float" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="FechaAprobacion" Type="datetime" />
+          <Property Name="NoAprobacion" Type="nvarchar" MaxLength="75" />
+          <Property Name="TransaccionCompletada" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="Bancos_Transacciones_FK1">
+          <End Role="Bancos" Type="Self.Bancos" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bancos">
+              <PropertyRef Name="BancoId" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="TUsuarioBancoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cliente_Cuentas_FK1">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Clientes_Transacciones_FK1">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cuentas_Transacciones_FK1">
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="CuentaId" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="CuentaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Rol_Empleado_FK1">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TipoCuenta_Cuentas_FK1">
+          <End Role="TipoCuentas" Type="Self.TipoCuentas" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCuentas">
+              <PropertyRef Name="TipoCuentasId" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="TipoCuentaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TipoMoneda_Transacciones_FK1">
+          <End Role="TipoMoneda" Type="Self.TipoMoneda" Multiplicity="0..1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMoneda">
+              <PropertyRef Name="MonedaId" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="TipoMonedaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TipoTransacciones_Transacciones_FK1">
+          <End Role="TipoTransacciones" Type="Self.TipoTransacciones" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTransacciones">
+              <PropertyRef Name="TipoTransacId" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="TipoTransacId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_GetAccounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cedula" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clienteid" Type="int" Mode="In" />
+          <Parameter Name="cuentaid" Type="int" Mode="In" />
+          <Parameter Name="tusuariocuenta" Type="int" Mode="In" />
+          <Parameter Name="tusuariocedula" Type="nvarchar" Mode="In" />
+          <Parameter Name="notas" Type="nvarchar" Mode="In" />
+          <Parameter Name="tipotransacid" Type="int" Mode="In" />
+          <Parameter Name="tusuariobancoid" Type="int" Mode="In" />
+          <Parameter Name="tipomonedaid" Type="int" Mode="In" />
+          <Parameter Name="debito" Type="float" Mode="In" />
+          <Parameter Name="credito" Type="float" Mode="In" />
+          <Parameter Name="fechacreacion" Type="datetime" Mode="In" />
+          <Parameter Name="fechaaprobacion" Type="datetime" Mode="In" />
+          <Parameter Name="noaprobacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="transaccioncompletada" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UpsertAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cuentaid" Type="int" Mode="In" />
+          <Parameter Name="clienteid" Type="int" Mode="In" />
+          <Parameter Name="balance" Type="float" Mode="In" />
+          <Parameter Name="tipocuentaid" Type="int" Mode="In" />
+          <Parameter Name="enabled" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UpsertClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cedula" Type="nvarchar" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+          <Parameter Name="nombres" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidos" Type="nvarchar" Mode="In" />
+          <Parameter Name="sexo" Type="varchar" Mode="In" />
+          <Parameter Name="fechanacimiento" Type="datetime" Mode="In" />
+          <Parameter Name="direccion" Type="nvarchar" Mode="In" />
+          <Parameter Name="telefono" Type="nvarchar" Mode="In" />
+          <Parameter Name="Estado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UpsertEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cedula" Type="nvarchar" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+          <Parameter Name="roleId" Type="int" Mode="In" />
+          <Parameter Name="nombres" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidos" Type="nvarchar" Mode="In" />
+          <Parameter Name="sexo" Type="varchar" Mode="In" />
+          <Parameter Name="fechanacimiento" Type="datetime" Mode="In" />
+          <Parameter Name="Estado" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="WorldBankModelStoreContainer">
+          <EntitySet Name="Bancos" EntityType="Self.Bancos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCuentas" EntityType="Self.TipoCuentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMoneda" EntityType="Self.TipoMoneda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoTransacciones" EntityType="Self.TipoTransacciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transacciones" EntityType="Self.Transacciones" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Bancos_Transacciones_FK1" Association="Self.Bancos_Transacciones_FK1">
+            <End Role="Bancos" EntitySet="Bancos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="Cliente_Cuentas_FK1" Association="Self.Cliente_Cuentas_FK1">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="Clientes_Transacciones_FK1" Association="Self.Clientes_Transacciones_FK1">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="Cuentas_Transacciones_FK1" Association="Self.Cuentas_Transacciones_FK1">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="Rol_Empleado_FK1" Association="Self.Rol_Empleado_FK1">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="TipoCuenta_Cuentas_FK1" Association="Self.TipoCuenta_Cuentas_FK1">
+            <End Role="TipoCuentas" EntitySet="TipoCuentas" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="TipoMoneda_Transacciones_FK1" Association="Self.TipoMoneda_Transacciones_FK1">
+            <End Role="TipoMoneda" EntitySet="TipoMoneda" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="TipoTransacciones_Transacciones_FK1" Association="Self.TipoTransacciones_Transacciones_FK1">
+            <End Role="TipoTransacciones" EntitySet="TipoTransacciones" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorldBankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="BancoId" />
+          </Key>
+          <Property Name="BancoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Enabled" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.Bancos_Transacciones_FK1" FromRole="Bancos" ToRole="Transacciones" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.Cliente_Cuentas_FK1" FromRole="Clientes" ToRole="Cuentas" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.Clientes_Transacciones_FK1" FromRole="Clientes" ToRole="Transacciones" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="CuentaId" />
+          </Key>
+          <Property Name="CuentaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteID" Type="Int32" Nullable="false" />
+          <Property Name="TipoCuentaId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="Balance" Type="Double" Nullable="false" />
+          <Property Name="Enabled" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.Cliente_Cuentas_FK1" FromRole="Cuentas" ToRole="Clientes" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.Cuentas_Transacciones_FK1" FromRole="Cuentas" ToRole="Transacciones" />
+          <NavigationProperty Name="TipoCuenta" Relationship="Self.TipoCuenta_Cuentas_FK1" FromRole="Cuentas" ToRole="TipoCuentas" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="EmpleadoId" />
+          </Key>
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.Rol_Empleado_FK1" FromRole="Empleados" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nota" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Enabled" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.Rol_Empleado_FK1" FromRole="Roles" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="TipoCuenta">
+          <Key>
+            <PropertyRef Name="TipoCuentasId" />
+          </Key>
+          <Property Name="TipoCuentasId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Enabled" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.TipoCuenta_Cuentas_FK1" FromRole="TipoCuentas" ToRole="Cuentas" />
+        </EntityType>
+        <EntityType Name="TipoMoneda">
+          <Key>
+            <PropertyRef Name="MonedaId" />
+          </Key>
+          <Property Name="MonedaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Enabled" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.TipoMoneda_Transacciones_FK1" FromRole="TipoMoneda" ToRole="Transacciones" />
+        </EntityType>
+        <EntityType Name="TipoTransaccione">
+          <Key>
+            <PropertyRef Name="TipoTransacId" />
+          </Key>
+          <Property Name="TipoTransacId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nota" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Enabled" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.TipoTransacciones_Transacciones_FK1" FromRole="TipoTransacciones" ToRole="Transacciones" />
+        </EntityType>
+        <EntityType Name="Transaccione">
+          <Key>
+            <PropertyRef Name="TransacId" />
+          </Key>
+          <Property Name="TransacId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteId" Type="Int32" Nullable="false" />
+          <Property Name="CuentaId" Type="Int32" Nullable="false" />
+          <Property Name="TUsuarioCuenta" Type="Int32" />
+          <Property Name="TUsuarioCedula" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Notas" Type="String" MaxLength="700" FixedLength="false" Unicode="true" />
+          <Property Name="TipoTransacId" Type="Int32" Nullable="false" />
+          <Property Name="TUsuarioBancoId" Type="Int32" Nullable="false" />
+          <Property Name="TipoMonedaId" Type="Int32" />
+          <Property Name="Debito" Type="Double" />
+          <Property Name="Credito" Type="Double" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaAprobacion" Type="DateTime" Precision="3" />
+          <Property Name="NoAprobacion" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="TransaccionCompletada" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Banco" Relationship="Self.Bancos_Transacciones_FK1" FromRole="Transacciones" ToRole="Bancos" />
+          <NavigationProperty Name="Cliente" Relationship="Self.Clientes_Transacciones_FK1" FromRole="Transacciones" ToRole="Clientes" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.Cuentas_Transacciones_FK1" FromRole="Transacciones" ToRole="Cuentas" />
+          <NavigationProperty Name="TipoMoneda" Relationship="Self.TipoMoneda_Transacciones_FK1" FromRole="Transacciones" ToRole="TipoMoneda" />
+          <NavigationProperty Name="TipoTransaccione" Relationship="Self.TipoTransacciones_Transacciones_FK1" FromRole="Transacciones" ToRole="TipoTransacciones" />
+        </EntityType>
+        <Association Name="Bancos_Transacciones_FK1">
+          <End Role="Bancos" Type="Self.Banco" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bancos">
+              <PropertyRef Name="BancoId" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="TUsuarioBancoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cliente_Cuentas_FK1">
+          <End Role="Clientes" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Clientes_Transacciones_FK1">
+          <End Role="Clientes" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cuentas_Transacciones_FK1">
+          <End Role="Cuentas" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="CuentaId" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="CuentaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TipoCuenta_Cuentas_FK1">
+          <End Role="TipoCuentas" Type="Self.TipoCuenta" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCuentas">
+              <PropertyRef Name="TipoCuentasId" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="TipoCuentaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Rol_Empleado_FK1">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TipoMoneda_Transacciones_FK1">
+          <End Role="TipoMoneda" Type="Self.TipoMoneda" Multiplicity="0..1" />
+          <End Role="Transacciones" Type="Self.Transaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMoneda">
+              <PropertyRef Name="MonedaId" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="TipoMonedaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TipoTransacciones_Transacciones_FK1">
+          <End Role="TipoTransacciones" Type="Self.TipoTransaccione" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTransacciones">
+              <PropertyRef Name="TipoTransacId" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="TipoTransacId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WorldBankEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bancos" EntityType="Self.Banco" />
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="Cuentas" EntityType="Self.Cuenta" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleado" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="TipoCuentas" EntityType="Self.TipoCuenta" />
+          <EntitySet Name="TipoMonedas" EntityType="Self.TipoMoneda" />
+          <EntitySet Name="TipoTransacciones" EntityType="Self.TipoTransaccione" />
+          <EntitySet Name="Transacciones" EntityType="Self.Transaccione" />
+          <AssociationSet Name="Bancos_Transacciones_FK1" Association="Self.Bancos_Transacciones_FK1">
+            <End Role="Bancos" EntitySet="Bancos" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="Cliente_Cuentas_FK1" Association="Self.Cliente_Cuentas_FK1">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="Clientes_Transacciones_FK1" Association="Self.Clientes_Transacciones_FK1">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="Cuentas_Transacciones_FK1" Association="Self.Cuentas_Transacciones_FK1">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="TipoCuenta_Cuentas_FK1" Association="Self.TipoCuenta_Cuentas_FK1">
+            <End Role="TipoCuentas" EntitySet="TipoCuentas" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="Rol_Empleado_FK1" Association="Self.Rol_Empleado_FK1">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="TipoMoneda_Transacciones_FK1" Association="Self.TipoMoneda_Transacciones_FK1">
+            <End Role="TipoMoneda" EntitySet="TipoMonedas" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="TipoTransacciones_Transacciones_FK1" Association="Self.TipoTransacciones_Transacciones_FK1">
+            <End Role="TipoTransacciones" EntitySet="TipoTransacciones" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <FunctionImport Name="sp_GetAccounts" ReturnType="Collection(WorldBankModel.sp_GetAccounts_Result)">
+            <Parameter Name="cedula" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetClient" ReturnType="Collection(WorldBankModel.sp_GetClient_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetEmployee" ReturnType="Collection(WorldBankModel.sp_GetEmployee_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertTransaction">
+            <Parameter Name="clienteid" Mode="In" Type="Int32" />
+            <Parameter Name="cuentaid" Mode="In" Type="Int32" />
+            <Parameter Name="tusuariocuenta" Mode="In" Type="Int32" />
+            <Parameter Name="tusuariocedula" Mode="In" Type="String" />
+            <Parameter Name="notas" Mode="In" Type="String" />
+            <Parameter Name="tipotransacid" Mode="In" Type="Int32" />
+            <Parameter Name="tusuariobancoid" Mode="In" Type="Int32" />
+            <Parameter Name="tipomonedaid" Mode="In" Type="Int32" />
+            <Parameter Name="debito" Mode="In" Type="Double" />
+            <Parameter Name="credito" Mode="In" Type="Double" />
+            <Parameter Name="fechacreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaaprobacion" Mode="In" Type="DateTime" />
+            <Parameter Name="noaprobacion" Mode="In" Type="String" />
+            <Parameter Name="transaccioncompletada" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpsertAccount">
+            <Parameter Name="cuentaid" Mode="In" Type="Int32" />
+            <Parameter Name="clienteid" Mode="In" Type="Int32" />
+            <Parameter Name="balance" Mode="In" Type="Double" />
+            <Parameter Name="tipocuentaid" Mode="In" Type="Int32" />
+            <Parameter Name="enabled" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpsertClient">
+            <Parameter Name="cedula" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="nombres" Mode="In" Type="String" />
+            <Parameter Name="apellidos" Mode="In" Type="String" />
+            <Parameter Name="sexo" Mode="In" Type="String" />
+            <Parameter Name="fechanacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpsertEmployee">
+            <Parameter Name="cedula" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="roleId" Mode="In" Type="Int32" />
+            <Parameter Name="nombres" Mode="In" Type="String" />
+            <Parameter Name="apellidos" Mode="In" Type="String" />
+            <Parameter Name="sexo" Mode="In" Type="String" />
+            <Parameter Name="fechanacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_GetAccounts_Result">
+          <Property Type="Int32" Name="CuentaId" Nullable="false" />
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="Balance" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_GetClient_Result">
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="Nombres" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Apellidos" Nullable="false" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="sp_GetEmployee_Result">
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="Nombres" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="Apellidos" Nullable="false" MaxLength="40" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WorldBankModelStoreContainer" CdmEntityContainer="WorldBankEntities">
+          <EntitySetMapping Name="Bancos">
+            <EntityTypeMapping TypeName="WorldBankModel.Banco">
+              <MappingFragment StoreEntitySet="Bancos">
+                <ScalarProperty Name="BancoId" ColumnName="BancoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="WorldBankModel.Cliente">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuentas">
+            <EntityTypeMapping TypeName="WorldBankModel.Cuenta">
+              <MappingFragment StoreEntitySet="Cuentas">
+                <ScalarProperty Name="CuentaId" ColumnName="CuentaId" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="TipoCuentaId" ColumnName="TipoCuentaId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="WorldBankModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="WorldBankModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCuentas">
+            <EntityTypeMapping TypeName="WorldBankModel.TipoCuenta">
+              <MappingFragment StoreEntitySet="TipoCuentas">
+                <ScalarProperty Name="TipoCuentasId" ColumnName="TipoCuentasId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMonedas">
+            <EntityTypeMapping TypeName="WorldBankModel.TipoMoneda">
+              <MappingFragment StoreEntitySet="TipoMoneda">
+                <ScalarProperty Name="MonedaId" ColumnName="MonedaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoTransacciones">
+            <EntityTypeMapping TypeName="WorldBankModel.TipoTransaccione">
+              <MappingFragment StoreEntitySet="TipoTransacciones">
+                <ScalarProperty Name="TipoTransacId" ColumnName="TipoTransacId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transacciones">
+            <EntityTypeMapping TypeName="WorldBankModel.Transaccione">
+              <MappingFragment StoreEntitySet="Transacciones">
+                <ScalarProperty Name="TransacId" ColumnName="TransacId" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="CuentaId" ColumnName="CuentaId" />
+                <ScalarProperty Name="TUsuarioCuenta" ColumnName="TUsuarioCuenta" />
+                <ScalarProperty Name="TUsuarioCedula" ColumnName="TUsuarioCedula" />
+                <ScalarProperty Name="Notas" ColumnName="Notas" />
+                <ScalarProperty Name="TipoTransacId" ColumnName="TipoTransacId" />
+                <ScalarProperty Name="TUsuarioBancoId" ColumnName="TUsuarioBancoId" />
+                <ScalarProperty Name="TipoMonedaId" ColumnName="TipoMonedaId" />
+                <ScalarProperty Name="Debito" ColumnName="Debito" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+                <ScalarProperty Name="NoAprobacion" ColumnName="NoAprobacion" />
+                <ScalarProperty Name="TransaccionCompletada" ColumnName="TransaccionCompletada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetAccounts" FunctionName="WorldBankModel.Store.sp_GetAccounts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorldBankModel.sp_GetAccounts_Result">
+                <ScalarProperty Name="CuentaId" ColumnName="CuentaId" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetClient" FunctionName="WorldBankModel.Store.sp_GetClient">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorldBankModel.sp_GetClient_Result">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetEmployee" FunctionName="WorldBankModel.Store.sp_GetEmployee">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorldBankModel.sp_GetEmployee_Result">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_InsertTransaction" FunctionName="WorldBankModel.Store.sp_InsertTransaction" />
+          <FunctionImportMapping FunctionImportName="sp_UpsertAccount" FunctionName="WorldBankModel.Store.sp_UpsertAccount" />
+          <FunctionImportMapping FunctionImportName="sp_UpsertClient" FunctionName="WorldBankModel.Store.sp_UpsertClient" />
+          <FunctionImportMapping FunctionImportName="sp_UpsertEmployee" FunctionName="WorldBankModel.Store.sp_UpsertEmployee" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
