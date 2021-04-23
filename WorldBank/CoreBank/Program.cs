@@ -15,9 +15,13 @@ namespace CoreBank
         {
             string nombreBanco = "WorldBank";
             string user;
+            string password;
+            string salir = "no";
+            string respuesta;
+
+
             int intento = 1;
             //int intentorestante = 2;
-            string password;
 
             Console.Title = nombreBanco;
 
@@ -45,10 +49,29 @@ namespace CoreBank
                     Console.WriteLine("Bienvenido al menu del sistema principal");
 
                     Console.WriteLine("Opciones:");
+
+                    while (salir == "no")
+                    {
+                        #region MenuPrincipal
+                        Console.WriteLine("1. Usuario");
+                        Console.WriteLine("2. Cliente");
+                        Console.WriteLine("3. Cuentas");
+                        Console.WriteLine("4. Empleado");
+                        Console.WriteLine("5. Buscar cliente por su id");
+                        Console.WriteLine("6. Salir");
+                        Console.WriteLine("");
+                        Console.Write("Inserte la opcion que desea: ");
+
+                        respuesta = Console.ReadLine();
+                         
+                        
+                        #endregion
+                    }
                 }
 
             }
         }
+
         #region Private Methods
         private static void PasswordVerify(string password)
         {
