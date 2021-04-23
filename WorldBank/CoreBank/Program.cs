@@ -17,7 +17,7 @@ namespace CoreBank
         static void Main(string[] args)
         {
             #region variables y soapClient
-            string answer, Consoleaccount, salir = "No", texto = "CROWN BANKING", linea = "-------------------------------------";
+            string answer, Consoleaccount, salir = "No";
             int intento = 1, intentorestante = 2;
 
             Console.Title = "CoreServer";
@@ -26,12 +26,11 @@ namespace CoreBank
             CoreWSSoapClient soapClient = new CoreWSSoapClient();
             #endregion
 
-            WriteTitle(texto, linea);
-
             while (intento < 4)
             {
                 #region log in
                 //Log in 
+                Console.WriteLine("THE WORLD BANK");
                 Console.WriteLine("Inicie sesión");
                 Console.WriteLine("");
                 Console.WriteLine("Inserte su usuario:");
