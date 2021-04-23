@@ -15,29 +15,34 @@ namespace WebApplication1
 	public partial class WebForm3 : System.Web.UI.Page
 	{
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+		//cargamos los datos
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			outUser.Text = WebForm1.user;
 			outCedula.Text = WebForm1.ced;
 		}
 
-
+		//boton menu
 		protected void Unnamed5_Click3(object sender, EventArgs e)
 		{
 			Response.Redirect("https://localhost:44368/Menu.aspx");
 		}
 
+		//boton transferencia
 		protected void Unnamed6_Click3(object sender, EventArgs e)
 		{
 			Response.Redirect("https://localhost:44368/Transferencia.aspx");
 		}
 
+		//boton contactenos
 		protected void Unnamed2_Click(object sender, EventArgs e)
 		{
 			Response.Write("<script> window.alert('BancoInternacional@gmail.com'); window.location.href='https://localhost:44368/Consulta.aspx'</script");
 
 		}
 
+		//boton estado de cuenta
 		protected void Button1_Click(object sender, EventArgs e)
 		{
 

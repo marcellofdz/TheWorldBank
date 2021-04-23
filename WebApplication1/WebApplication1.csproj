@@ -104,9 +104,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
+    <Content Include="App_Data\usuarioPrueba.mdf" />
+    <Content Include="App_Data\usuarioPrueba_log.ldf">
+      <DependentUpon>usuarioPrueba.mdf</DependentUpon>
     </Content>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

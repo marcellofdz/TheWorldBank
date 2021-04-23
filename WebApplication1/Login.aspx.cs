@@ -19,17 +19,19 @@ namespace WebApplication1
 
 		}
 
-
+		//variables globales
 		public static string user = "", pass ="", ced ="";
 
+		//boton contactenos
 		protected void Button2_Click(object sender, EventArgs e)
 		{
 			Response.Write("<script> window.alert('BancoInternacional@gmail.com'); window.location.href='https://localhost:44368/Login.aspx'</script");
 		}
 
+		//iniciar sesion
 		protected void Button1_Click(object sender, EventArgs e)
 		{
-
+			//coneccion base de datos
 			SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cn"].ConnectionString);
 			connection.Open();
 			Console.WriteLine("connection State: " + connection.State);
@@ -48,7 +50,7 @@ namespace WebApplication1
 			command.CommandType = System.Data.CommandType.StoredProcedure;
 		
 				dr = command.ExecuteReader();
-
+		//inicio de sesion
 				if (dr.Read())
 				{
 
