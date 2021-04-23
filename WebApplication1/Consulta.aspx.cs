@@ -35,10 +35,10 @@ namespace WebApplication1
 			Response.Redirect("https://localhost:44368/Transferencia.aspx");
 		}
 
-		//boton contactenos
+		////boton contactenos
 		protected void Unnamed2_Click(object sender, EventArgs e)
 		{
-			Response.Write("<script> window.alert('BancoInternacional@gmail.com'); window.location.href='https://localhost:44368/Consulta.aspx'</script");
+			//Response.Write("<script> window.alert('BancoInternacional@gmail.com'); window.location.href='https://localhost:44368/Consulta.aspx'</script");
 
 		}
 
@@ -69,7 +69,8 @@ namespace WebApplication1
 			else
 			{
 				log.Error("Numero de  invalidos");
-				Response.Write("<script> window.alert('numero de cuenta incorrecto'); window.location.href='https://localhost:44368/Consulta.aspx'</script");
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('numero de cuenta incorrecto');", true);
+				//Response.Write("<script> window.alert('numero de cuenta incorrecto'); window.location.href='https://localhost:44368/Consulta.aspx'</script");
 			}
 
 		}

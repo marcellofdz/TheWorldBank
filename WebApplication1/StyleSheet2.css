@@ -25,7 +25,20 @@ form {
 	justify-content: center;
 	align-items:center;
 }
-
+.out {
+	position: absolute;
+	float: right;
+	bottom: 0px;
+	right: 0px;
+	margin: 5px;
+	
+}
+	.out path {
+		transition: fill .4s ease
+	}
+	.out path:hover {
+		fill: #65B1EF;
+	}
 
 nav {
 	top:0px;
@@ -37,8 +50,15 @@ span {
 	color: white;
 	font-size: 25px;
 	line-height: 60px;
-	padding: 0 100px;
+	padding: 0 10px;
 	font-weight: bold;
+}
+#logo{
+
+	position:static;
+	float:right	;
+	margin-right:20px;
+
 }
 
 nav ul {
@@ -78,10 +98,10 @@ nav ul {
 footer {
 	background: #272727;
 	display: flex;
+	position: absolute;
 	bottom: 0px;
 	width: 100%;
 	height: 40px;
-	position: absolute;
 	align-items: center;
 	justify-content: center;
 	left: 0px;
@@ -113,6 +133,8 @@ svg{
 	justify-content: center;
 	align-items:center;
 	width: 100%;
+
+
 }
 .campos2 {
 	font-size: 10px;
@@ -187,7 +209,7 @@ svg{
 
 .frase {
 	width:590px;
-	height:150px;
+	height:100%;
 	color: white;
 	background-color: rgb(0 0 0 / 0.70);
 	padding: 20px 0px 20px 0px;
@@ -195,6 +217,10 @@ svg{
 
 }
 
-.texto{
+h2.texto{
 	padding:0px 20px 0px 20px;
+	font-weight:lighter;
+}
+h1.texto {
+	padding: 0px 20px 0px 20px;
 }

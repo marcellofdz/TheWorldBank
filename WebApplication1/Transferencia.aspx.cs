@@ -17,7 +17,7 @@ namespace WebApplication1
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			transUser.Text = WebForm1.user;
-			transCed.Text = WebForm1.ced;
+
 		}
 
 		//boton menu
@@ -35,7 +35,7 @@ namespace WebApplication1
 		//boton contactenos
 		protected void but1_Click(object sender, EventArgs e)
 		{
-			Response.Write("<script> window.alert('BancoInternacional@gmail.com'); window.location.href='https://localhost:44368/Transferencia.aspx'</script");
+			//Response.Write("<script> window.alert('BancoInternacional@gmail.com'); window.location.href='https://localhost:44368/Transferencia.aspx'</script");
 
 		}
 
@@ -51,15 +51,19 @@ namespace WebApplication1
 
 			try
 			{
-				if(transUser.Text == "" || transCed.Text == "" || transACC.Text == "" || transUser2.Text == "" || transAcc2.Text == "" || transMonto.Text == "")
+				tran = connection.BeginTransaction();
+				if (transUser.Text == "" || transACC.Text == "" || transUser2.Text == "" || transAcc2.Text == "" || transMonto.Text == "")
 				{
+					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Rellene todos los campos del formulario');", true);
+
 					Response.Write("<script> window.alert('Rellene todos los campos del formulario'); window.location.href='https://localhost:44368/Transferencia.aspx'</script");
 				}
 				else
 				{
+					
 					command = new SqlCommand("ppTran", connection, tran);
 					command.Parameters.AddWithValue("@nombre1", transUser.Text);
-					command.Parameters.AddWithValue("@cedula1", transCed.Text);
+					command.Parameters.AddWithValue("@cedula1", WebForm1.ced);
 					command.Parameters.AddWithValue("@numeroCuenta1", transACC.Text);
 					command.Parameters.AddWithValue("@nombre2", transUser2.Text);
 					command.Parameters.AddWithValue("@numeroCuenta2", transAcc2.Text);
@@ -73,7 +77,7 @@ namespace WebApplication1
 					log.Info($"nombre del usuario:{WebForm1.user}, cedula del usuario:{WebForm1.ced}, numero de cuenta del usuario:{transACC.Text}, nombre del transferido:{transUser.Text}, numero de cuenta del transferido:{transAcc2.Text}, monto a transferir{transMonto.Text} ");
 					Response.Write("<script> window.alert('transaccion realizada correctamente'); window.location.href='https://localhost:44368/Transferencia.aspx'</script");
 				}
-				tran = connection.BeginTransaction();
+				
 
 	
 
@@ -82,7 +86,9 @@ namespace WebApplication1
 			{
 				tran.Rollback();
 				log.Error("Error en la transaccion");
-				Response.Write("<script> window.alert('Ha ocurrido un error durante su transaccion intentelo mas tarde'); window.location.href='https://localhost:44368/Transferencia.aspx'</script");
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Ha ocurrido un error durante su transaccion intentelo mas tarde');", true);
+
+				//Response.Write("<script> window.alert('Ha ocurrido un error durante su transaccion intentelo mas tarde'); window.location.href='https://localhost:44368/Transferencia.aspx'</script");
 			}
 
 		

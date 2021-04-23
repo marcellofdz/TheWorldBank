@@ -7,6 +7,7 @@
 	<link href="StyleSheet1.css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Internet Banking</title>
+    
 </head>
 <body>
 	<header>Internet Banking</header>          
@@ -23,7 +24,7 @@
         <!--botones-->
 		<div class="button">
             <asp:Button ID="Button1" runat="server" Text="Iniciar sesion" OnClick="Button1_Click" />
-			<asp:Button ID="Button2" runat="server" Text="Contáctenos" OnClick="Button2_Click" />
+			<asp:Button ID="Button2" runat="server" Text="Contáctenos" OnClick="Button2_Click" OnClientClick="alert('BancoInternacional@gmail.com')" />
 
 		</div>
      

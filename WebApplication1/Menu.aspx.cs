@@ -27,7 +27,7 @@ namespace WebApplication1
 		//boton contactenos
 		protected void but1_Click(object sender, EventArgs e)
 		{
-			Response.Write("<script> window.alert('BancoInternacional@gmail.com'); window.location.href='https://localhost:44368/Menu.aspx'</script");
+			//Response.Write("<script> window.alert('BancoInternacional@gmail.com'); window.location.href='https://localhost:44368/Menu.aspx'</script");
 
 		}
 	}
