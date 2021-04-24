@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace ServiceBank.Models
 {
@@ -13,6 +14,7 @@ namespace ServiceBank.Models
 
         public string Username { get; set; }
 
+        [XmlIgnore]
         public string Password { get; set; }
 
         public int RoleId { get; set; }
@@ -27,6 +29,7 @@ namespace ServiceBank.Models
 
         public DateTime FechaIngreso { get; set; }
 
+        [XmlIgnore]
         public int Estado { get; set; }
     }
 }

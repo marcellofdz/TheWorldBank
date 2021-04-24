@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace ServiceBank.Models
 {
-    public class Transaccione
+    public class TransaccioneCL
     {
+        [XmlIgnore]
         public int TransacId { get; set; }
 
         public int ClienteId { get; set; }

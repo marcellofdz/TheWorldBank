@@ -6,15 +6,15 @@ using System.Xml.Serialization;
 
 namespace ServiceBank.Models
 {
-    public class Cliente
+    public class ClienteCL
     {
+        [XmlIgnore] 
         public int ClienteID { get; set; }
 
         public string Cedula { get; set; }
 
         public string Username { get; set; }
 
-        [XmlIgnore]
         public string Password { get; set; }
 
         public string Nombres { get; set; }
@@ -25,13 +25,13 @@ namespace ServiceBank.Models
 
         public DateTime FechaNacimiento { get; set; }
 
+        [XmlIgnore]
         public DateTime FechaIngreso { get; set; }
 
         public string Direccion { get; set; }
 
         public string Telefono { get; set; }
 
-        [XmlIgnore]
         public int Estado { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace ServiceBank.Services
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Conn"].ConnectionString);
 
-        public static Respuesta UpsertAccount(Cuenta cuenta )
+        public static Respuesta UpsertAccount(CuentaCL cuenta )
         {
             Respuesta resp = new Respuesta();
             connection.Open();
@@ -25,7 +25,6 @@ namespace ServiceBank.Services
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@cuentaid", cuenta.CuentaId);
                 command.Parameters.AddWithValue("@clienteid", cuenta.ClienteID);
-                command.Parameters.AddWithValue("@balance", cuenta.Balance);
                 command.Parameters.AddWithValue("@tipocuentaid", cuenta.TipoCuentaId);
                 command.Parameters.AddWithValue("@enabled", cuenta.Enabled);
                 command.ExecuteNonQuery();
@@ -49,7 +48,7 @@ namespace ServiceBank.Services
             return resp;
         }
 
-        public static Respuesta UpsertClient(Cliente cliente)
+        public static Respuesta UpsertClient(ClienteCL cliente)
         {
             Respuesta resp = new Respuesta();
             connection.Open();
@@ -92,7 +91,7 @@ namespace ServiceBank.Services
             return resp;
         }
 
-        public static Respuesta UpsertEmployee(Empleado empleado)
+        public static Respuesta UpsertEmployee(EmpleadoCL empleado)
         {
             Respuesta resp = new Respuesta();
             connection.Open();

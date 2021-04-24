@@ -35,6 +35,11 @@ namespace ServiceBank.Services
                         client.Cedula = (string)dreader["Cedula"];
                         client.Nombres = (string)dreader["Nombres"];
                         client.Apellidos = (string)dreader["Apellidos"];
+                        client.Sexo = (string)dreader["Sexo"];
+                        client.FechaNacimiento = (DateTime)dreader["FechaNacimiento"];
+                        client.FechaIngreso = (DateTime)dreader["FechaIngreso"];
+                        client.Direccion = (string)dreader["Direccion"];
+                        client.Telefono = (string)dreader["Telefono"];
                     }
                     resp.Mensaje = $"Cliente encontrado {client.Cedula}";
                     resp.Codigo = 0;
@@ -76,6 +81,9 @@ namespace ServiceBank.Services
                         employee.RoleId = (int)dreader["RoleId"];
                         employee.Nombres = (string)dreader["Nombres"];
                         employee.Apellidos = (string)dreader["Apellidos"];
+                        employee.Sexo = (string)dreader["Sexo"];
+                        employee.FechaNacimiento = (DateTime)dreader["FechaNacimiento"];
+                        employee.FechaIngreso = (DateTime)dreader["FechaIngreso"];
                     }
                     resp.Mensaje = $"Empleado encontrado {employee.Cedula}";
                     resp.Codigo = 0;
@@ -115,7 +123,8 @@ namespace ServiceBank.Services
                         account.CuentaId = (int)dreader["CuentaId"];
                         account.ClienteID = (int)dreader["ClienteID"];
                         account.TipoCuentaId = (int)dreader["TipoCuentaId"];
-                        account.Balance = (float)dreader["Balance"];
+                        account.Balance = (double)dreader["Balance"];
+                        account.FechaCreacion = (DateTime)dreader["FechaCreacion"];
 
                         result.Add(account);
                     }
@@ -164,8 +173,8 @@ namespace ServiceBank.Services
                         transaccione.TipoTransacId = (int)dreader["TipoTransacId"];
                         transaccione.TUsuarioBancoId = (int)dreader["TUsuarioBancoId"];
                         transaccione.TipoMonedaId = (int)dreader["TipoMonedaId"];
-                        transaccione.Debito = (float)dreader["Debito"]; ;
-                        transaccione.Credito = (float)dreader["Credito"];;
+                        transaccione.Debito = (double)dreader["Debito"]; ;
+                        transaccione.Credito = (double)dreader["Credito"];;
                         transaccione.FechaAprobacion = (DateTime)dreader["FechaAprobacion"];
                         transaccione.NoAprobacion = (string)dreader["NoAprobacion"];
 
