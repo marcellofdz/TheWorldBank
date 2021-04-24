@@ -48,7 +48,7 @@ namespace ServiceBank
         }
 
         [WebMethod]
-        public Respuesta UpsertClientResp(Cliente reqCliente )
+        public Respuesta UpsertClientResp(ClienteCL reqCliente )
         {
             Respuesta upclient_result = UpsertServices.UpsertClient(reqCliente);
 
@@ -56,7 +56,7 @@ namespace ServiceBank
         }
 
         [WebMethod]
-        public Respuesta UpsertAccountResp(Cuenta cuenta)
+        public Respuesta UpsertAccountResp(CuentaCL cuenta)
         {
             Respuesta upaccount_result = UpsertServices.UpsertAccount(cuenta);
 
@@ -64,7 +64,7 @@ namespace ServiceBank
         }
 
         [WebMethod]
-        public Respuesta UpsertEmployeeResp(Empleado empleado)
+        public Respuesta UpsertEmployeeResp(EmpleadoCL empleado)
         {
             Respuesta upemployee_result = UpsertServices.UpsertEmployee(empleado);
 
@@ -72,7 +72,7 @@ namespace ServiceBank
         }
 
         [WebMethod]
-        public Respuesta InsertTransactionResp(Transaccione transaccione)
+        public Respuesta InsertTransactionResp(TransaccioneCL transaccione)
         {
             Respuesta intransac_result = InsertServices.InsertTransaction(transaccione);
 

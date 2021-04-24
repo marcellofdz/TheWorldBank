@@ -110,13 +110,17 @@
     </Compile>
     <Compile Include="Models\Banco.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\ClienteCL.cs" />
     <Compile Include="Models\Cuenta.cs" />
+    <Compile Include="Models\CuentaCL.cs" />
     <Compile Include="Models\Empleado.cs" />
+    <Compile Include="Models\EmpleadoCL.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\TipoCuenta.cs" />
     <Compile Include="Models\TipoMoneda.cs" />
     <Compile Include="Models\TipoTransaccione.cs" />
     <Compile Include="Models\Transaccione.cs" />
+    <Compile Include="Models\TransaccioneCL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GetServices.cs" />
     <Compile Include="Services\InsertServices.cs" />

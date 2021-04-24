@@ -12,7 +12,7 @@ namespace ServiceBank.Services
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Conn"].ConnectionString);
 
-        public static Respuesta InsertTransaction(Transaccione transaccione)
+        public static Respuesta InsertTransaction(TransaccioneCL transaccione)
         {
             Respuesta resp = new Respuesta();
             connection.Open();
@@ -21,7 +21,7 @@ namespace ServiceBank.Services
             SqlCommand command = null;
             try
             {
-                float? monto = (transaccione.Credito.HasValue) ? transaccione.Credito : transaccione.Debito * -1;
+                double? monto = (transaccione.Credito.HasValue) ? transaccione.Credito : transaccione.Debito * -1;
 
                 trann = connection.BeginTransaction();
                 command = new SqlCommand("sp_InsertTransaction", connection, trann);

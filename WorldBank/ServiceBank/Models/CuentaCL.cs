@@ -6,8 +6,9 @@ using System.Xml.Serialization;
 
 namespace ServiceBank.Models
 {
-    public class Cuenta
+    public class CuentaCL
     {
+        [XmlIgnore]
         public int CuentaId { get; set; }
 
         public int ClienteID { get; set; }
@@ -18,7 +19,6 @@ namespace ServiceBank.Models
 
         public double Balance { get; set; }
 
-        [XmlIgnore]
         public int Enabled { get; set; }
     }
 }
