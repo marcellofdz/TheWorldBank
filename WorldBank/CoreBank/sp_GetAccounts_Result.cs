@@ -15,7 +15,7 @@ namespace CoreBank
     {
         public int CuentaId { get; set; }
         public int ClienteID { get; set; }
-        public string Nombre { get; set; }
         public double Balance { get; set; }
+        public int TipoCuentaId { get; set; }
     }
 }

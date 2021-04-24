@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreBank", "CoreBank\CoreBank.csproj", "{CA9818C3-E2C4-4612-92CF-5F4C3CB87252}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D879C0EB-EFF3-4A3A-BE0D-DDCD6A8EA589} = {D879C0EB-EFF3-4A3A-BE0D-DDCD6A8EA589}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBank", "ServiceBank\ServiceBank.csproj", "{D879C0EB-EFF3-4A3A-BE0D-DDCD6A8EA589}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{CA9818C3-E2C4-4612-92CF-5F4C3CB87252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA9818C3-E2C4-4612-92CF-5F4C3CB87252}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA9818C3-E2C4-4612-92CF-5F4C3CB87252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D879C0EB-EFF3-4A3A-BE0D-DDCD6A8EA589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D879C0EB-EFF3-4A3A-BE0D-DDCD6A8EA589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D879C0EB-EFF3-4A3A-BE0D-DDCD6A8EA589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D879C0EB-EFF3-4A3A-BE0D-DDCD6A8EA589}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

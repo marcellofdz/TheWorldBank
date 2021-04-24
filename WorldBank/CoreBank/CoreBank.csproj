@@ -63,6 +63,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,6 +73,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Banco.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\WSB\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Cuenta.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empleado.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Banco.cs" />
     <Compile Include="Entities\TipoTransaccion.cs" />
     <Compile Include="Entities\Cliente.cs" />
@@ -81,13 +99,41 @@
     <Compile Include="Entities\TipoCuentas.cs" />
     <Compile Include="Entities\TipoMoneda.cs" />
     <Compile Include="Entities\Transacciones.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetAccounts_Result.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetClient_Result.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetEmployee_Result.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoCuenta.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoMoneda.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoTransaccione.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaccione.cs">
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="WorldBankModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WorldBankModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorldBankModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorldBankModel.tt</DependentUpon>
     </Compile>
     <Compile Include="WorldBankModel.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -97,6 +143,46 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\WSB\CoreBank.WSB.ArrayOfSp_GetAccounts_Result1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.ArrayOfSp_GetTrasactions_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.Cliente.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.Empleado.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.GetAccountRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.GetClientRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.GetEmployeeRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.GetTrasactionsRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.InsertTransactionRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.Respuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.UpsertAccountRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.UpsertClientRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\CoreBank.WSB.UpsertEmployeeRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSB\WebServiceBank.wsdl" />
     <None Include="packages.config" />
     <EntityDeploy Include="WorldBankModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -119,13 +205,32 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\WSB\WebServiceBank.disco" />
+    <None Include="Connected Services\WSB\configuration91.svcinfo" />
+    <None Include="Connected Services\WSB\configuration.svcinfo" />
+    <None Include="Connected Services\WSB\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="WorldBankModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>WorldBankModel.Context.cs</LastGenOutput>
+      <DependentUpon>WorldBankModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="WorldBankModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WorldBankModel.edmx</DependentUpon>
+      <LastGenOutput>WorldBankModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WSB\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

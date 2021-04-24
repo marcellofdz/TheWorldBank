@@ -635,8 +635,8 @@
         <ComplexType Name="sp_GetAccounts_Result">
           <Property Type="Int32" Name="CuentaId" Nullable="false" />
           <Property Type="Int32" Name="ClienteID" Nullable="false" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
           <Property Type="Double" Name="Balance" Nullable="false" />
+          <Property Type="Int32" Name="TipoCuentaId" Nullable="false" />
         </ComplexType>
         <ComplexType Name="sp_GetClient_Result">
           <Property Type="String" Name="Cedula" Nullable="false" MaxLength="11" />
@@ -775,8 +775,8 @@
               <ComplexTypeMapping TypeName="WorldBankModel.sp_GetAccounts_Result">
                 <ScalarProperty Name="CuentaId" ColumnName="CuentaId" />
                 <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="TipoCuentaId" ColumnName="TipoCuentaId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
