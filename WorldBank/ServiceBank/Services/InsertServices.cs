@@ -39,7 +39,6 @@ namespace ServiceBank.Services
                 command.Parameters.AddWithValue("@fechaaprobacion", transaccione.FechaAprobacion);
                 command.Parameters.AddWithValue("@noaprobacion", transaccione.NoAprobacion);
                 command.ExecuteNonQuery();
-                trann.Commit();
 
                 command = new SqlCommand("sp_UpdateAccountBalance", connection, trann);
                 command.CommandType = System.Data.CommandType.StoredProcedure;

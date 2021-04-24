@@ -155,7 +155,7 @@ namespace ServiceBank.Services
 
             command = new SqlCommand("sp_GetTrasactions", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@cuenta", cuenta);
+            command.Parameters.AddWithValue("@cuentaid", cuenta);
 
             using (SqlDataReader dreader = command.ExecuteReader())
             {

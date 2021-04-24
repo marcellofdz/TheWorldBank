@@ -101,7 +101,7 @@ namespace ServiceBank.Services
             try
             {
                 trann = connection.BeginTransaction();
-                command = new SqlCommand("sp_UpsertClient", connection, trann);
+                command = new SqlCommand("sp_UpsertEmployee", connection, trann);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@cedula", empleado.Cedula);
                 command.Parameters.AddWithValue("@username", empleado.Username);
