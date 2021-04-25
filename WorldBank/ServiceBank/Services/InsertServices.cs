@@ -33,7 +33,7 @@ namespace ServiceBank.Services
                 if (transaccione.TUsuarioId.GetValueOrDefault(0) > 0)
                 {
                     command.Parameters.AddWithValue("@tusuarioid", transaccione.TUsuarioId);
-                    command.Parameters.AddWithValue("@tusuariocuenta", transaccione.CuentaId);
+                    command.Parameters.AddWithValue("@tusuariocuenta", transaccione.TUsuarioCuenta);
                 }
 
                 command.Parameters.AddWithValue("@tusuariobancoid", transaccione.TUsuarioBancoId);
@@ -53,7 +53,7 @@ namespace ServiceBank.Services
                 if (transaccione.TUsuarioId.GetValueOrDefault(0) > 0)
                 {
                     command.Parameters.AddWithValue("@tusuarioid", transaccione.TUsuarioId);
-                    command.Parameters.AddWithValue("@tusuariocuenta", transaccione.CuentaId);
+                    command.Parameters.AddWithValue("@tusuariocuenta", transaccione.TUsuarioCuenta);
                 }
                 command.ExecuteNonQuery();
                 trann.Commit();
