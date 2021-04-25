@@ -210,7 +210,7 @@ namespace ServiceBank.Services
                         transaccione.ClienteId = (int)dreader["ClienteId"];
                         transaccione.CuentaId = (int)dreader["CuentaId"];
                         transaccione.TUsuarioCuenta = (int)dreader["TUsuarioCuenta"];
-                        transaccione.TUsuarioId = (int)dreader["TUsuarioCedula"];
+                        transaccione.TUsuarioId = (int)dreader["TUsuarioId"];
                         transaccione.Notas = (string)dreader["Notas"];
                         transaccione.TipoTransacId = (int)dreader["TipoTransacId"];
                         transaccione.TUsuarioBancoId = (int)dreader["TUsuarioBancoId"];
@@ -218,7 +218,7 @@ namespace ServiceBank.Services
                         transaccione.Debito = (double)dreader["Debito"]; ;
                         transaccione.Credito = (double)dreader["Credito"];;
                         transaccione.FechaAprobacion = (DateTime)dreader["FechaAprobacion"];
-                        transaccione.NoAprobacion = (string)dreader["NoAprobacion"];
+                        if (!string.IsNullOrEmpty(dreader["NoAprobacion"].ToString())) transaccione.NoAprobacion = (string)dreader["NoAprobacion"];
 
                         result.Add(transaccione);
                     }

@@ -21,7 +21,7 @@ namespace ServiceBank.Services
             SqlCommand command = null;
             try
             {
-                double? monto = (transaccione.Credito.HasValue) ? transaccione.Credito : transaccione.Debito * -1;
+                double? monto = (transaccione.Credito.GetValueOrDefault(0) > 0) ? transaccione.Credito : transaccione.Debito;
 
                 trann = connection.BeginTransaction();
                 command = new SqlCommand("sp_InsertTransaction", connection, trann);
@@ -45,8 +45,9 @@ namespace ServiceBank.Services
 
                 command = new SqlCommand("sp_UpdateAccountBalance", connection, trann);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@clienteid", transaccione.ClienteId);
                 command.Parameters.AddWithValue("@cuentaid", transaccione.CuentaId);
+                command.Parameters.AddWithValue("@clienteid", transaccione.ClienteId);
+                command.Parameters.AddWithValue("@tipotransacid", transaccione.TipoTransacId);
                 command.Parameters.AddWithValue("@monto", monto);
 
                 if (transaccione.TUsuarioId.GetValueOrDefault(0) > 0)
