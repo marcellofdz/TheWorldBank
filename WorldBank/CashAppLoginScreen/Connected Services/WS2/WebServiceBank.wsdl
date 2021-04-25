@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="ServiceBank" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="ServiceBank" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="ServiceBank">
+      <s:element name="GetClientResp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientRespResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClientRespResult" type="tns:Cliente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Cliente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cedula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombres" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEmployeeResp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeRespResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmployeeRespResult" type="tns:Empleado" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Empleado">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EmpleadoId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cedula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RoleId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombres" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAccountResp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountRespResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccountRespResult" type="tns:ArrayOfCuenta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCuenta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cuenta" nillable="true" type="tns:Cuenta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cuenta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CuentaId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoCuentaId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTUserAccountResp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cuenta" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTUserAccountRespResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTUserAccountRespResult" type="tns:Cuenta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrasactionsResp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cuenta" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrasactionsRespResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTrasactionsRespResult" type="tns:ArrayOfTransaccione" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTransaccione">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Transaccione" nillable="true" type="tns:Transaccione" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Transaccione">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TransacId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CuentaId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TUsuarioCuenta" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TUsuarioId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notas" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoTransacId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TUsuarioBancoId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoMonedaId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Debito" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Credito" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaAprobacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoAprobacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpsertClientResp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqCliente" type="tns:ClienteCL" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ClienteCL">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cedula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombres" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpsertClientRespResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpsertClientRespResult" type="tns:Respuesta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Respuesta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Codigo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpsertAccountResp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cuenta" type="tns:CuentaCL" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CuentaCL">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoCuentaId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpsertAccountRespResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpsertAccountRespResult" type="tns:Respuesta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpsertEmployeeResp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empleado" type="tns:EmpleadoCL" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmpleadoCL">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cedula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RoleId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombres" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpsertEmployeeRespResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpsertEmployeeRespResult" type="tns:Respuesta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertTransactionResp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="transaccione" type="tns:TransaccioneCL" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TransaccioneCL">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CuentaId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TUsuarioCuenta" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TUsuarioId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notas" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoTransacId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TUsuarioBancoId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoMonedaId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Debito" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Credito" nillable="true" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertTransactionRespResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertTransactionRespResult" type="tns:Respuesta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetClientRespSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientResp" />
+  </wsdl:message>
+  <wsdl:message name="GetClientRespSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientRespResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeRespSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmployeeResp" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeRespSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmployeeRespResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountRespSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAccountResp" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountRespSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAccountRespResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTUserAccountRespSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTUserAccountResp" />
+  </wsdl:message>
+  <wsdl:message name="GetTUserAccountRespSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTUserAccountRespResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTrasactionsRespSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTrasactionsResp" />
+  </wsdl:message>
+  <wsdl:message name="GetTrasactionsRespSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTrasactionsRespResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpsertClientRespSoapIn">
+    <wsdl:part name="parameters" element="tns:UpsertClientResp" />
+  </wsdl:message>
+  <wsdl:message name="UpsertClientRespSoapOut">
+    <wsdl:part name="parameters" element="tns:UpsertClientRespResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpsertAccountRespSoapIn">
+    <wsdl:part name="parameters" element="tns:UpsertAccountResp" />
+  </wsdl:message>
+  <wsdl:message name="UpsertAccountRespSoapOut">
+    <wsdl:part name="parameters" element="tns:UpsertAccountRespResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpsertEmployeeRespSoapIn">
+    <wsdl:part name="parameters" element="tns:UpsertEmployeeResp" />
+  </wsdl:message>
+  <wsdl:message name="UpsertEmployeeRespSoapOut">
+    <wsdl:part name="parameters" element="tns:UpsertEmployeeRespResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertTransactionRespSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertTransactionResp" />
+  </wsdl:message>
+  <wsdl:message name="InsertTransactionRespSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertTransactionRespResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceBankSoap">
+    <wsdl:operation name="GetClientResp">
+      <wsdl:input message="tns:GetClientRespSoapIn" />
+      <wsdl:output message="tns:GetClientRespSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeResp">
+      <wsdl:input message="tns:GetEmployeeRespSoapIn" />
+      <wsdl:output message="tns:GetEmployeeRespSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountResp">
+      <wsdl:input message="tns:GetAccountRespSoapIn" />
+      <wsdl:output message="tns:GetAccountRespSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTUserAccountResp">
+      <wsdl:input message="tns:GetTUserAccountRespSoapIn" />
+      <wsdl:output message="tns:GetTUserAccountRespSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrasactionsResp">
+      <wsdl:input message="tns:GetTrasactionsRespSoapIn" />
+      <wsdl:output message="tns:GetTrasactionsRespSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpsertClientResp">
+      <wsdl:input message="tns:UpsertClientRespSoapIn" />
+      <wsdl:output message="tns:UpsertClientRespSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpsertAccountResp">
+      <wsdl:input message="tns:UpsertAccountRespSoapIn" />
+      <wsdl:output message="tns:UpsertAccountRespSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpsertEmployeeResp">
+      <wsdl:input message="tns:UpsertEmployeeRespSoapIn" />
+      <wsdl:output message="tns:UpsertEmployeeRespSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTransactionResp">
+      <wsdl:input message="tns:InsertTransactionRespSoapIn" />
+      <wsdl:output message="tns:InsertTransactionRespSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceBankSoap" type="tns:WebServiceBankSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetClientResp">
+      <soap:operation soapAction="ServiceBank/GetClientResp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeResp">
+      <soap:operation soapAction="ServiceBank/GetEmployeeResp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountResp">
+      <soap:operation soapAction="ServiceBank/GetAccountResp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTUserAccountResp">
+      <soap:operation soapAction="ServiceBank/GetTUserAccountResp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrasactionsResp">
+      <soap:operation soapAction="ServiceBank/GetTrasactionsResp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertClientResp">
+      <soap:operation soapAction="ServiceBank/UpsertClientResp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertAccountResp">
+      <soap:operation soapAction="ServiceBank/UpsertAccountResp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertEmployeeResp">
+      <soap:operation soapAction="ServiceBank/UpsertEmployeeResp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTransactionResp">
+      <soap:operation soapAction="ServiceBank/InsertTransactionResp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceBankSoap12" type="tns:WebServiceBankSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetClientResp">
+      <soap12:operation soapAction="ServiceBank/GetClientResp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeResp">
+      <soap12:operation soapAction="ServiceBank/GetEmployeeResp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountResp">
+      <soap12:operation soapAction="ServiceBank/GetAccountResp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTUserAccountResp">
+      <soap12:operation soapAction="ServiceBank/GetTUserAccountResp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrasactionsResp">
+      <soap12:operation soapAction="ServiceBank/GetTrasactionsResp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertClientResp">
+      <soap12:operation soapAction="ServiceBank/UpsertClientResp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertAccountResp">
+      <soap12:operation soapAction="ServiceBank/UpsertAccountResp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertEmployeeResp">
+      <soap12:operation soapAction="ServiceBank/UpsertEmployeeResp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTransactionResp">
+      <soap12:operation soapAction="ServiceBank/InsertTransactionResp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceBank">
+    <wsdl:port name="WebServiceBankSoap" binding="tns:WebServiceBankSoap">
+      <soap:address location="https://localhost:44339/WebServiceBank.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceBankSoap12" binding="tns:WebServiceBankSoap12">
+      <soap12:address location="https://localhost:44339/WebServiceBank.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

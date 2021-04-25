@@ -17,7 +17,7 @@ namespace ServiceBank.Models
 
         public int? TUsuarioCuenta { get; set; }
 
-        public string TUsuarioCedula { get; set; }
+        public int? TUsuarioId { get; set; }
 
         public string Notas { get; set; }
 
@@ -31,8 +31,10 @@ namespace ServiceBank.Models
 
         public double? Credito { get; set; }
 
+        [XmlIgnore]
         public DateTime? FechaAprobacion { get; set; }
 
+        [XmlIgnore]
         public string NoAprobacion { get; set; }
     }
 }

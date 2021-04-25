@@ -146,6 +146,48 @@ namespace ServiceBank.Services
             return result;
         }
 
+        public static Cuenta GetTUserAccount(string cedula, int cuentaid)
+        {
+            Respuesta resp = new Respuesta();
+            Cuenta account = new Cuenta();
+            connection.Open();
+            SqlCommand command = null;
+
+            command = new SqlCommand("sp_GetTUserAccounts", connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@tusuariocedula", cedula);
+            command.Parameters.AddWithValue("@tusuariocuenta", cuentaid);
+
+            using (SqlDataReader dreader = command.ExecuteReader())
+            {
+                if (dreader.HasRows)
+                {
+                    while (dreader.Read())
+                    {
+                        account.CuentaId = (int)dreader["CuentaId"];
+                        account.ClienteID = (int)dreader["ClienteID"];
+                        account.TipoCuentaId = (int)dreader["TipoCuentaId"];
+                        account.Balance = (double)dreader["Balance"];
+                        account.FechaCreacion = (DateTime)dreader["FechaCreacion"];
+                    }
+
+                    resp.Mensaje = $"Cuenta encontrada: {cuentaid}";
+                    resp.Codigo = 0;
+                    log.Info(resp.Mensaje);
+                }
+
+                else
+                {
+                    resp.Mensaje = $"Cuenta no encontrada: {cuentaid}";
+                    resp.Codigo = 2;
+                    log.Info(resp.Mensaje);
+                }
+            }
+            connection.Close();
+
+            return account;
+        }
+
         public static List<Transaccione> GetTrasactions(int cuenta)
         {
             Respuesta resp = new Respuesta();
@@ -168,7 +210,7 @@ namespace ServiceBank.Services
                         transaccione.ClienteId = (int)dreader["ClienteId"];
                         transaccione.CuentaId = (int)dreader["CuentaId"];
                         transaccione.TUsuarioCuenta = (int)dreader["TUsuarioCuenta"];
-                        transaccione.TUsuarioCedula = (string)dreader["TUsuarioCedula"];
+                        transaccione.TUsuarioId = (int)dreader["TUsuarioId"];
                         transaccione.Notas = (string)dreader["Notas"];
                         transaccione.TipoTransacId = (int)dreader["TipoTransacId"];
                         transaccione.TUsuarioBancoId = (int)dreader["TUsuarioBancoId"];
@@ -176,7 +218,7 @@ namespace ServiceBank.Services
                         transaccione.Debito = (double)dreader["Debito"]; ;
                         transaccione.Credito = (double)dreader["Credito"];;
                         transaccione.FechaAprobacion = (DateTime)dreader["FechaAprobacion"];
-                        transaccione.NoAprobacion = (string)dreader["NoAprobacion"];
+                        if (!string.IsNullOrEmpty(dreader["NoAprobacion"].ToString())) transaccione.NoAprobacion = (string)dreader["NoAprobacion"];
 
                         result.Add(transaccione);
                     }

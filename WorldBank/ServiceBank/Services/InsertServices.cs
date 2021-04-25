@@ -21,30 +21,40 @@ namespace ServiceBank.Services
             SqlCommand command = null;
             try
             {
-                double? monto = (transaccione.Credito.HasValue) ? transaccione.Credito : transaccione.Debito * -1;
+                double? monto = (transaccione.Credito.GetValueOrDefault(0) > 0) ? transaccione.Credito : transaccione.Debito;
 
                 trann = connection.BeginTransaction();
                 command = new SqlCommand("sp_InsertTransaction", connection, trann);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@clienteid", transaccione.ClienteId);
                 command.Parameters.AddWithValue("@cuentaid", transaccione.CuentaId);
-                command.Parameters.AddWithValue("@tusuariocuenta", transaccione.CuentaId);
-                command.Parameters.AddWithValue("@tusuariocedula", transaccione.TUsuarioCedula);
                 command.Parameters.AddWithValue("@notas", transaccione.Notas);
-                command.Parameters.AddWithValue("@tipotransacid", transaccione.TipoTransacId);
+
+                if (transaccione.TUsuarioId.GetValueOrDefault(0) > 0)
+                {
+                    command.Parameters.AddWithValue("@tusuarioid", transaccione.TUsuarioId);
+                    command.Parameters.AddWithValue("@tusuariocuenta", transaccione.CuentaId);
+                }
+
                 command.Parameters.AddWithValue("@tusuariobancoid", transaccione.TUsuarioBancoId);
+                command.Parameters.AddWithValue("@tipotransacid", transaccione.TipoTransacId);
                 command.Parameters.AddWithValue("@tipomonedaid", transaccione.TipoMonedaId);
                 command.Parameters.AddWithValue("@debito", transaccione.Debito);
                 command.Parameters.AddWithValue("@credito", transaccione.Credito);
-                command.Parameters.AddWithValue("@fechaaprobacion", transaccione.FechaAprobacion);
-                command.Parameters.AddWithValue("@noaprobacion", transaccione.NoAprobacion);
                 command.ExecuteNonQuery();
 
                 command = new SqlCommand("sp_UpdateAccountBalance", connection, trann);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@clienteid", transaccione.ClienteId);
                 command.Parameters.AddWithValue("@cuentaid", transaccione.CuentaId);
+                command.Parameters.AddWithValue("@clienteid", transaccione.ClienteId);
+                command.Parameters.AddWithValue("@tipotransacid", transaccione.TipoTransacId);
                 command.Parameters.AddWithValue("@monto", monto);
+
+                if (transaccione.TUsuarioId.GetValueOrDefault(0) > 0)
+                {
+                    command.Parameters.AddWithValue("@tusuarioid", transaccione.TUsuarioId);
+                    command.Parameters.AddWithValue("@tusuariocuenta", transaccione.CuentaId);
+                }
                 command.ExecuteNonQuery();
                 trann.Commit();
 

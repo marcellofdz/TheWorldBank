@@ -15,8 +15,10 @@ namespace ServiceBank.Models
 
         public int TipoCuentaId { get; set; }
 
+        [XmlIgnore] 
         public DateTime? FechaCreacion { get; set; }
 
+        [XmlIgnore] 
         public double Balance { get; set; }
 
         public int Enabled { get; set; }

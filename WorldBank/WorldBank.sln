@@ -3,10 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreBank", "CoreBank\CoreBank.csproj", "{CA9818C3-E2C4-4612-92CF-5F4C3CB87252}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cash_LoginScreen", "CashAppLoginScreen\Cash_LoginScreen.csproj", "{4012EB93-472A-4F51-A604-B07C8CA9D58E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D879C0EB-EFF3-4A3A-BE0D-DDCD6A8EA589} = {D879C0EB-EFF3-4A3A-BE0D-DDCD6A8EA589}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cash_Dashboard", "CashAppDashboard\Cash_Dashboard.csproj", "{7AE9F65A-B445-4C1B-9EA8-137BD05BB86D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9C587DA1-DD02-4D71-BA8B-B23187E89FC3} = {9C587DA1-DD02-4D71-BA8B-B23187E89FC3}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServiceIntegracion", "WebServiceIntegracion\WebServiceIntegracion.csproj", "{9C587DA1-DD02-4D71-BA8B-B23187E89FC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{C625A321-68F3-457B-9032-2FB63A774D0A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9C587DA1-DD02-4D71-BA8B-B23187E89FC3} = {9C587DA1-DD02-4D71-BA8B-B23187E89FC3}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreBank", "CoreBank\CoreBank.csproj", "{CA9818C3-E2C4-4612-92CF-5F4C3CB87252}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBank", "ServiceBank\ServiceBank.csproj", "{D879C0EB-EFF3-4A3A-BE0D-DDCD6A8EA589}"
 EndProject
@@ -16,6 +30,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4012EB93-472A-4F51-A604-B07C8CA9D58E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4012EB93-472A-4F51-A604-B07C8CA9D58E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4012EB93-472A-4F51-A604-B07C8CA9D58E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4012EB93-472A-4F51-A604-B07C8CA9D58E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AE9F65A-B445-4C1B-9EA8-137BD05BB86D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AE9F65A-B445-4C1B-9EA8-137BD05BB86D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AE9F65A-B445-4C1B-9EA8-137BD05BB86D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AE9F65A-B445-4C1B-9EA8-137BD05BB86D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C587DA1-DD02-4D71-BA8B-B23187E89FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C587DA1-DD02-4D71-BA8B-B23187E89FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C587DA1-DD02-4D71-BA8B-B23187E89FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C587DA1-DD02-4D71-BA8B-B23187E89FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C625A321-68F3-457B-9032-2FB63A774D0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C625A321-68F3-457B-9032-2FB63A774D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C625A321-68F3-457B-9032-2FB63A774D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C625A321-68F3-457B-9032-2FB63A774D0A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CA9818C3-E2C4-4612-92CF-5F4C3CB87252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CA9818C3-E2C4-4612-92CF-5F4C3CB87252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA9818C3-E2C4-4612-92CF-5F4C3CB87252}.Release|Any CPU.ActiveCfg = Release|Any CPU
