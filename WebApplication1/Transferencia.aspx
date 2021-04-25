@@ -26,14 +26,18 @@
 		<div class="campos2">
 			<h1 class="head">Transaccion Bancaria</h1>
 			<asp:TextBox class="input" runat="server" ID="transUser" ReadOnly="True" ></asp:TextBox>
-			<asp:TextBox class="input" runat="server" placeholder="numero de cuenta" ID="transACC"></asp:TextBox> 
 			<asp:TextBox class="input" runat="server" placeholder="nombre del transferido" ID="transUser2"></asp:TextBox> 
+			<asp:TextBox class="input" runat="server" placeholder="Cedula del transferido" ID="transCedd2"></asp:TextBox> 
 			<asp:TextBox class="input" runat="server" placeholder="numero de cuenta del transferido" ID="transAcc2"></asp:TextBox> 
-			<asp:TextBox class="input" runat="server" placeholder="monto a transferir" ID="transMonto"></asp:TextBox>
+			<asp:TextBox class="input" runat="server" placeholder="monto a transferir" ID="transMonto"></asp:TextBox><asp:DropDownList ID="moneda" runat="server">
+				<asp:ListItem Value="1">RD</asp:ListItem>
+				<asp:ListItem Value="2">USD</asp:ListItem>
+			</asp:DropDownList>
 
 			<!--botones-->
 		<div class="button">
             <asp:Button ID="Button1" runat="server" Text="Confirmar Transaccion" OnClick="Button1_Click" OnClientClick="return confirm('esta seguro de su transaccion')" />
+			<asp:Button ID="Button2" runat="server" Text="Historial de Transacciones" OnClick="Button2_Click"/>
 		</div>
 		</div>
 	</div>

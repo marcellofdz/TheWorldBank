@@ -25,8 +25,7 @@
 		<div class="campos1">
 			<h1 class="h1">Estado de Cuenta</h1>
 			<asp:TextBox class="input" runat="server" ID="outUser" ReadOnly="True"></asp:TextBox> 
-			<asp:TextBox class="input" runat="server" ID="outCedula" ReadOnly="True"></asp:TextBox>
-			<asp:TextBox class="input" runat="server" ID="inCuenta" placeholder="Ingrese su numero de cuenta"></asp:TextBox> 
+			<asp:TextBox class="input" runat="server" ID="outced" ReadOnly="True"></asp:TextBox> 
 			<asp:TextBox class="input" runat="server" ID="outMonto" placeholder="monto actual" ReadOnly="True"></asp:TextBox> 
 			<!--botones-->
 		<div class="button">

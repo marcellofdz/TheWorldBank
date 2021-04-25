@@ -156,7 +156,6 @@ C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\bin\SqlServerType
 C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\bin\SqlServerTypes\x86\msvcr120.dll
 C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
 C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\bin\log4net.config
-C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\bin\WebApplication1.dll.config
 C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\bin\WebApplication1.dll
 C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\bin\WebApplication1.pdb
 C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\bin\roslyn\csc.exe
@@ -304,3 +303,4 @@ C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\obj\Debug\WebAppl
 C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Oli Japa\source\repos\InternatBanking\WebApplication1\bin\WebApplication1.dll.config

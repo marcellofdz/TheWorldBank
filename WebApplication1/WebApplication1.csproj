@@ -75,6 +75,8 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -108,6 +110,56 @@
     <Content Include="App_Data\usuarioPrueba_log.ldf">
       <DependentUpon>usuarioPrueba.mdf</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.Cliente.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.Cuenta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.Empleado.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.GetAccountRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.GetClientRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.GetEmployeeRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.GetTrasactionsRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.InsertTransactionRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.Respuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.Transaccione.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.UpsertAccountRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.UpsertClientRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.UpsertEmployeeRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ws\WebApplication1.ws.GetTUserAccountRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ws\WebServiceBank.disco" />
+    <None Include="Connected Services\ws\configuration91.svcinfo" />
+    <None Include="Connected Services\ws\configuration.svcinfo" />
+    <None Include="Connected Services\ws\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="historial.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -123,13 +175,51 @@
     </Content>
     <Content Include="StyleSheet1.css" />
     <Content Include="StyleSheet2.css" />
-    <Content Include="Web.config" />
     <Content Include="Login.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="Consulta.aspx" />
     <Content Include="Transferencia.aspx" />
+    <Content Include="local.config" />
+    <None Include="local.Debug.config">
+      <DependentUpon>local.config</DependentUpon>
+    </None>
+    <None Include="local.Release.config">
+      <DependentUpon>local.config</DependentUpon>
+    </None>
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ws\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="historial.aspx.cs">
+      <DependentUpon>historial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="historial.aspx.designer.cs">
+      <DependentUpon>historial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Banco.cs" />
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\ClienteCL.cs" />
+    <Compile Include="Models\Cuenta.cs" />
+    <Compile Include="Models\CuentaCL.cs" />
+    <Compile Include="Models\Empleado.cs" />
+    <Compile Include="Models\EmpleadoCL.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\TipoCuenta.cs" />
+    <Compile Include="Models\TipoMoneda.cs" />
+    <Compile Include="Models\TipoTransaccione.cs" />
+    <Compile Include="Models\Transaccione.cs" />
+    <Compile Include="Models\TransaccioneCL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="ValuesController1.cs" />
@@ -166,13 +256,14 @@
     <Content Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Connected Services\ws\WebServiceBank.wsdl" />
     <None Include="packages.config" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ws\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

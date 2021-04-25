@@ -42,15 +42,6 @@ namespace WebApplication1
 		protected global::System.Web.UI.WebControls.TextBox transUser;
 
 		/// <summary>
-		/// Control transACC.
-		/// </summary>
-		/// <remarks>
-		/// Campo generado automáticamente.
-		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox transACC;
-
-		/// <summary>
 		/// Control transUser2.
 		/// </summary>
 		/// <remarks>
@@ -58,6 +49,15 @@ namespace WebApplication1
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.TextBox transUser2;
+
+		/// <summary>
+		/// Control transCedd2.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox transCedd2;
 
 		/// <summary>
 		/// Control transAcc2.
@@ -78,6 +78,15 @@ namespace WebApplication1
 		protected global::System.Web.UI.WebControls.TextBox transMonto;
 
 		/// <summary>
+		/// Control moneda.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList moneda;
+
+		/// <summary>
 		/// Control Button1.
 		/// </summary>
 		/// <remarks>
@@ -85,5 +94,14 @@ namespace WebApplication1
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.Button Button1;
+
+		/// <summary>
+		/// Control Button2.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button Button2;
 	}
 }
