@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Xml.Serialization;
+using WebServiceIntegracion.Services;
 
 namespace WebServiceIntegracion.Models
 {
@@ -17,7 +18,7 @@ namespace WebServiceIntegracion.Models
 
         public int? TUsuarioCuenta { get; set; }
 
-        public string TUsuarioCedula { get; set; }
+        public int? TUsuarioId { get; set; }
 
         public string Notas { get; set; }
 
@@ -31,8 +32,10 @@ namespace WebServiceIntegracion.Models
 
         public double? Credito { get; set; }
 
+        [XmlIgnore]
         public DateTime? FechaAprobacion { get; set; }
 
+        [XmlIgnore]
         public string NoAprobacion { get; set; }
     }
 }

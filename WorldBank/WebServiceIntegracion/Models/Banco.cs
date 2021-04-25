@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebServiceIntegracion.Services;
+using WebServiceIntegracion.Models;
 
 namespace WebServiceIntegracion.Models
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebServiceIntegracion.Services;
 
 namespace WebServiceIntegracion.Models
 {
@@ -15,7 +16,7 @@ namespace WebServiceIntegracion.Models
 
         public int? TUsuarioCuenta { get; set; }
 
-        public string TUsuarioCedula { get; set; }
+        public int? TUsuarioId { get; set; }
 
         public string Notas { get; set; }
 

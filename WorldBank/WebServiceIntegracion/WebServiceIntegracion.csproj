@@ -43,8 +43,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -101,17 +106,89 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\CoreWS\WebServiceBank.disco" />
+    <None Include="Connected Services\CoreWS\configuration91.svcinfo" />
+    <None Include="Connected Services\CoreWS\configuration.svcinfo" />
+    <None Include="Connected Services\CoreWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="WorldBankWebService.asmx" />
+    <None Include="Connected Services\CoreWS\WebServiceBank.wsdl" />
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.Cliente.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.Cuenta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.Empleado.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.GetAccountRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.GetClientRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.GetEmployeeRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.GetTrasactionsRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.GetTUserAccountRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.InsertTransactionRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.Respuesta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.Transaccione.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.UpsertAccountRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.UpsertClientRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CoreWS\WebServiceIntegracion.CoreWS.UpsertEmployeeRespResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Connected Services\CoreWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Banco.cs" />
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\ClienteCL.cs" />
+    <Compile Include="Models\Cuenta.cs" />
+    <Compile Include="Models\CuentaCL.cs" />
+    <Compile Include="Models\Empleado.cs" />
+    <Compile Include="Models\EmpleadoCL.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\TipoCuenta.cs" />
+    <Compile Include="Models\TipoMoneda.cs" />
+    <Compile Include="Models\TipoTransaccione.cs" />
+    <Compile Include="Models\Transaccione.cs" />
+    <Compile Include="Models\TransaccioneCL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GetServices.cs" />
+    <Compile Include="Services\InsertServices.cs" />
+    <Compile Include="Services\Respuesta.cs" />
+    <Compile Include="Services\UpsertServices.cs" />
     <Compile Include="WorldBankWebService.asmx.cs">
       <DependentUpon>WorldBankWebService.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -130,7 +207,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CoreWS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

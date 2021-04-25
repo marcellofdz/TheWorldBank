@@ -55,7 +55,7 @@ namespace ServiceBank
         }
 
         [WebMethod]
-        public Respuesta UpsertClientResp(ClienteCL reqCliente )
+        public Respuesta UpsertClientResp(ClienteCL reqCliente)
         {
             Respuesta upclient_result = UpsertServices.UpsertClient(reqCliente);
 

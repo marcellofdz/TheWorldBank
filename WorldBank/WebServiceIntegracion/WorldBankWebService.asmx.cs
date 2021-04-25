@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using WebServiceIntegracion.Models;
+using WebServiceIntegracion.Services;
 
 namespace WebServiceIntegracion
 {
@@ -18,40 +20,81 @@ namespace WebServiceIntegracion
     {
 
         [WebMethod]
-        public List<Transaccione> GetTrasactionsResp(int cuenta)
+        public CoreWS.Cliente GetClientResp(string username, string password)
         {
-            List<Transaccione> account_result = GetServices.GetTrasactions(cuenta);
+            CoreWS.WebServiceBankSoapClient core = new CoreWS.WebServiceBankSoapClient();
+
+            
+            CoreWS.Cliente client_result = core.GetClientResp(username, password);
+
+            return client_result;
+        }
+
+        [WebMethod]
+        public CoreWS.Empleado GetEmployeeResp(string username, string password)
+        {
+            CoreWS.WebServiceBankSoapClient core = new CoreWS.WebServiceBankSoapClient();
+
+            CoreWS.Empleado employee_result = core.GetEmployeeResp(username, password);
+            return employee_result;
+        }
+
+        [WebMethod]
+        public CoreWS.Cuenta[] GetAccountResp(int clienteid)
+        {
+            CoreWS.WebServiceBankSoapClient core = new CoreWS.WebServiceBankSoapClient();
+            CoreWS.Cuenta[] account_result = core.GetAccountResp(clienteid);
             return account_result;
         }
 
         [WebMethod]
-        public Respuesta UpsertClientResp(ClienteCL reqCliente)
+        public CoreWS.Cuenta GetTUserAccountResp(string cedula, int cuenta)
         {
-            Respuesta upclient_result = UpsertServices.UpsertClient(reqCliente);
+            CoreWS.WebServiceBankSoapClient core = new CoreWS.WebServiceBankSoapClient();
+            CoreWS.Cuenta account_result = core.GetTUserAccountResp(cedula, cuenta);
+            return account_result;
+        }
+
+        [WebMethod]
+        public CoreWS.Transaccione[] GetTrasactionsResp(int cuenta)
+        {
+            CoreWS.WebServiceBankSoapClient core = new CoreWS.WebServiceBankSoapClient();
+            CoreWS.Transaccione[] account_result = core.GetTrasactionsResp(cuenta);
+            return account_result;
+        }
+
+        [WebMethod]
+        public CoreWS.Respuesta UpsertClientResp(CoreWS.ClienteCL reqCliente)
+        {
+            CoreWS.WebServiceBankSoapClient core = new CoreWS.WebServiceBankSoapClient();
+            CoreWS.Respuesta upclient_result = core.UpsertClientResp(reqCliente);
 
             return upclient_result;
         }
 
         [WebMethod]
-        public Respuesta UpsertAccountResp(CuentaCL cuenta)
+        public CoreWS.Respuesta UpsertAccountResp(CoreWS.CuentaCL cuenta)
         {
-            Respuesta upaccount_result = UpsertServices.UpsertAccount(cuenta);
+            CoreWS.WebServiceBankSoapClient core = new CoreWS.WebServiceBankSoapClient();
+            CoreWS.Respuesta upaccount_result = core.UpsertAccountResp(cuenta);
 
             return upaccount_result;
         }
 
         [WebMethod]
-        public Respuesta UpsertEmployeeResp(EmpleadoCL empleado)
+        public CoreWS.Respuesta UpsertEmployeeResp(CoreWS.EmpleadoCL empleado)
         {
-            Respuesta upemployee_result = UpsertServices.UpsertEmployee(empleado);
+            CoreWS.WebServiceBankSoapClient core = new CoreWS.WebServiceBankSoapClient();
+            CoreWS.Respuesta upemployee_result = core.UpsertEmployeeResp(empleado);
 
             return upemployee_result;
         }
 
         [WebMethod]
-        public Respuesta InsertTransactionResp(TransaccioneCL transaccione)
+        public CoreWS.Respuesta InsertTransactionResp(CoreWS.TransaccioneCL transaccione)
         {
-            Respuesta intransac_result = InsertServices.InsertTransaction(transaccione);
+            CoreWS.WebServiceBankSoapClient core = new CoreWS.WebServiceBankSoapClient();
+            CoreWS.Respuesta intransac_result = core.InsertTransactionResp(transaccione);
 
             return intransac_result;
         }
