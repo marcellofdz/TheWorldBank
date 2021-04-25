@@ -41,6 +41,13 @@ namespace ServiceBank
         }
 
         [WebMethod]
+        public Cuenta GetTUserAccountResp(string cedula, int cuenta)
+        {
+            Cuenta account_result = GetServices.GetTUserAccount(cedula, cuenta);
+            return account_result;
+        }
+
+        [WebMethod]
         public List<Transaccione> GetTrasactionsResp(int cuenta)
         {
             List<Transaccione> account_result = GetServices.GetTrasactions(cuenta);

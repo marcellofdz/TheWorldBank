@@ -15,7 +15,7 @@ namespace ServiceBank.Models
 
         public int? TUsuarioCuenta { get; set; }
 
-        public string TUsuarioCedula { get; set; }
+        public int? TUsuarioId { get; set; }
 
         public string Notas { get; set; }
 
